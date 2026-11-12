@@ -1,0 +1,11 @@
+{
+  "name": "vox-k-shape-explainer",
+  "version": "1.0.0",
+  "description": "Vox-style explainer video on the K-Shaped Recovery, AI Capital Divergence, and Geopolitical Fracture",
+  "dependencies": {
+    "gsap": "^3.15.0"
+  },
+  "scripts": {
+    "render": "hyperframes render"
+  }
+}

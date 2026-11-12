@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Vox Explainer: The K-Shaped Recovery, AI & Geopolitical Fracture</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --vox-black: #0f1013;
+        --vox-dark: #16171b;
+        --vox-panel: #1e2026;
+        --vox-yellow: #ffe500;
+        --vox-yellow-dim: rgba(255, 229, 0, 0.15);
+        --vox-red: #ff334b;
+        --vox-red-dim: rgba(255, 51, 75, 0.15);
+        --vox-cyan: #00f0ff;
+        --vox-white: #f8fafc;
+        --vox-muted: #94a3b8;
+        --vox-border: rgba(255, 255, 255, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--vox-black);
+        color: var(--vox-white);
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: radial-gradient(circle at 60% 20%, #1c1d24 0%, #0c0d10 80%);
+      }
+
+      /* Subtle Halftone Paper Texture Overlay */
+      .paper-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 16px 16px;
+        pointer-events: none;
+        opacity: 0.8;
+      }
+
+      /* Vox Yellow Top Accent Bar */
+      .vox-top-stripe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: var(--vox-yellow);
+        z-index: 100;
+      }
+
+      /* Top Header Banner */
+      .top-banner {
+        position: absolute;
+        top: 36px;
+        left: 70px;
+        right: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 80;
+      }
+
+      .vox-brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .vox-badge {
+        background: var(--vox-yellow);
+        color: #000;
+        font-family: 'Fraunces', serif;
+        font-weight: 900;
+        font-size: 26px;
+        line-height: 1;
+        padding: 6px 16px;
+        border-radius: 4px;
+        letter-spacing: -0.04em;
+      }
+
+      .vox-series {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--vox-white);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .status-pill {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 51, 75, 0.12);
+        border: 1px solid rgba(255, 51, 75, 0.3);
+        padding: 6px 18px;
+        border-radius: 999px;
+        color: var(--vox-red);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+      }
+
+      .pulse-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--vox-red);
+        box-shadow: 0 0 10px var(--vox-red);
+      }
+
+      /* Base Scene Setup */
+      .scene {
+        position: absolute;
+        top: 96px;
+        left: 70px;
+        width: 1780px;
+        height: 930px;
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Vox Headline Styling */
+      .headline-block {
+        margin-top: 14px;
+        margin-bottom: 24px;
+      }
+
+      .vox-tagline {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--vox-yellow);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 8px;
+      }
+
+      .vox-headline {
+        font-family: 'Fraunces', serif;
+        font-size: 54px;
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        color: #ffffff;
+      }
+
+      .vox-highlight {
+        background: var(--vox-yellow);
+        color: #000;
+        padding: 0 8px;
+        display: inline-block;
+        border-radius: 3px;
+        transform: rotate(-0.5deg);
+      }
+
+      .vox-highlight-red {
+        background: var(--vox-red);
+        color: #fff;
+        padding: 0 8px;
+        display: inline-block;
+        border-radius: 3px;
+        transform: rotate(0.5deg);
+      }
+
+      /* SCENE 1: The K-Shape Graph Layout */
+      .s1-container {
+        display: flex;
+        gap: 40px;
+        height: 720px;
+      }
+
+      .s1-graph-col {
+        flex: 1.35;
+        background: rgba(22, 23, 27, 0.75);
+        border: 1px solid var(--vox-border);
+        border-radius: 16px;
+        padding: 24px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      }
+
+      .s1-cards-col {
+        flex: 0.85;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .k-metric-card {
+        background: var(--vox-panel);
+        border: 1px solid var(--vox-border);
+        border-radius: 12px;
+        padding: 26px;
+        position: relative;
+      }
+
+      .k-metric-card.upper {
+        border-left: 6px solid var(--vox-yellow);
+      }
+
+      .k-metric-card.lower {
+        border-left: 6px solid var(--vox-red);
+      }
+
+      .k-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 10px;
+      }
+
+      .k-card-title {
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .k-card-stat {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 28px;
+        font-weight: 800;
+      }
+
+      .k-card-stat.yellow { color: var(--vox-yellow); }
+      .k-card-stat.red { color: var(--vox-red); }
+
+      .k-card-desc {
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--vox-muted);
+      }
+
+      /* SCENE 2: The AI Divide */
+      .s2-container {
+        display: flex;
+        gap: 36px;
+        height: 720px;
+      }
+
+      .s2-col {
+        flex: 1;
+        background: rgba(22, 23, 27, 0.8);
+        border: 1px solid var(--vox-border);
+        border-radius: 16px;
+        padding: 34px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .s2-col.capital {
+        border-top: 6px solid var(--vox-yellow);
+      }
+
+      .s2-col.labor {
+        border-top: 6px solid var(--vox-red);
+      }
+
+      .s2-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        letter-spacing: 0.1em;
+      }
+
+      .s2-title {
+        font-family: 'Fraunces', serif;
+        font-size: 32px;
+        font-weight: 800;
+        margin-bottom: 16px;
+      }
+
+      .s2-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 14px;
+      }
+
+      .s2-list li {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #cbd5e1;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .s2-list li strong {
+        color: #ffffff;
+      }
+
+      .stat-callout {
+        margin-top: auto;
+        padding: 20px;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .stat-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 38px;
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+
+      /* SCENE 3: Geopolitical Fracture */
+      .s3-container {
+        display: flex;
+        gap: 36px;
+        height: 720px;
+      }
+
+      .s3-map-col {
+        flex: 1.25;
+        background: rgba(22, 23, 27, 0.8);
+        border: 1px solid var(--vox-border);
+        border-radius: 16px;
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .s3-choke-col {
+        flex: 0.85;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .choke-card {
+        background: var(--vox-panel);
+        border: 1px solid var(--vox-border);
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      .choke-tag {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--vox-cyan);
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+
+      .choke-name {
+        font-size: 18px;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 6px;
+      }
+
+      .choke-desc {
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--vox-muted);
+      }
+
+      /* SCENE 4: Grave Reality & The Breaking Point */
+      .s4-container {
+        display: flex;
+        gap: 32px;
+        height: 720px;
+      }
+
+      .s4-card {
+        flex: 1;
+        background: rgba(22, 23, 27, 0.85);
+        border: 1px solid var(--vox-border);
+        border-radius: 16px;
+        padding: 36px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .s4-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+      }
+
+      .s4-card.c1::before { background: var(--vox-yellow); }
+      .s4-card.c2::before { background: var(--vox-red); }
+      .s4-card.c3::before { background: var(--vox-cyan); }
+
+      .s4-roman {
+        font-family: 'Fraunces', serif;
+        font-size: 36px;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.2);
+        margin-bottom: 8px;
+      }
+
+      .s4-title {
+        font-size: 24px;
+        font-weight: 800;
+        margin-bottom: 16px;
+        line-height: 1.25;
+      }
+
+      .s4-desc {
+        font-size: 16px;
+        line-height: 1.65;
+        color: #cbd5e1;
+      }
+
+      .s4-footer-quote {
+        margin-top: auto;
+        font-family: 'Fraunces', serif;
+        font-style: italic;
+        font-size: 18px;
+        color: #f1f5f9;
+        border-left: 3px solid var(--vox-yellow);
+        padding-left: 14px;
+      }
+
+      /* Animated SVG Elements */
+      @keyframes dashmove {
+        from { stroke-dashoffset: 80; }
+        to { stroke-dashoffset: 0; }
+      }
+
+      .dash-trace {
+        stroke-dasharray: 8 6;
+        animation: dashmove 1.5s linear infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="74"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Audio Track: Voiceover + Tension Documentary Bed -->
+      <audio id="audio-track" class="clip" data-start="0" data-duration="74" src="assets/song.mp3"></audio>
+
+      <!-- Vox Top Brand Accent Stripe -->
+      <div class="vox-top-stripe clip" data-start="0" data-duration="74"></div>
+
+      <!-- Halftone Texture Overlay -->
+      <div class="paper-overlay clip" data-start="0" data-duration="74"></div>
+
+      <!-- Top Technical / Editorial Banner -->
+      <header class="top-banner clip" data-start="0" data-duration="74">
+        <div class="vox-brand">
+          <div class="vox-badge">Vox</div>
+          <span class="vox-series">THE EXPLAINER • GLOBAL REPORT</span>
+        </div>
+        <div class="status-pill">
+          <div class="pulse-dot"></div>
+          <span>GEOPOLITICAL ALERT: COMPUTE CHASM</span>
+        </div>
+      </header>
+
+      <!-- ================= SCENE 1: THE K-SHAPE RECOVERY (0.0s - 18.0s) ================= -->
+      <div id="scene1" class="scene clip" data-start="0" data-duration="18.0">
+        <div class="headline-block">
+          <div class="vox-tagline">Episode 01 • Economic Bifurcation</div>
+          <h1 class="vox-headline">
+            The Illusion of Recovery: The <span class="vox-highlight">K-Shape Fracture</span>
+          </h1>
+        </div>
+
+        <div class="s1-container">
+          <!-- Left: Dynamic Animated K-Shape Graph -->
+          <div class="s1-graph-col">
+            <svg id="k-graph-svg" width="940" height="600" viewBox="0 0 940 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="upper-glow" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#ffe500" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#ffe500" stop-opacity="1"/>
+                </linearGradient>
+                <linearGradient id="lower-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ff334b" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#ff334b" stop-opacity="1"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Grid Lines -->
+              <line x1="80" y1="300" x2="880" y2="300" stroke="#334155" stroke-width="2" stroke-dasharray="6 6"/>
+              <text x="90" y="290" fill="#64748b" font-family="'JetBrains Mono'" font-size="13" font-weight="700">PRE-CRISIS BASELINE (100%)</text>
+
+              <!-- Historical Baseline Line (Flat then drop) -->
+              <path d="M 80 300 L 320 300" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+              <circle cx="320" cy="300" r="8" fill="#94a3b8"/>
+              <text x="320" y="335" fill="#94a3b8" font-family="'JetBrains Mono'" font-size="14" font-weight="700" text-anchor="middle">SHOCK EVENT</text>
+
+              <!-- THE DROP -->
+              <path d="M 320 300 L 420 380" stroke="#ff334b" stroke-width="6" stroke-linecap="round"/>
+              <circle cx="420" cy="380" r="10" fill="#ff334b"/>
+              <text x="420" y="415" fill="#ff334b" font-family="'JetBrains Mono'" font-size="15" font-weight="800" text-anchor="middle">THE BIFURCATION POINT</text>
+
+              <!-- UPPER ARM OF THE K (Tech Capital & Asset Monopolies) -->
+              <path id="k-upper-path" d="M 420 380 L 860 100" stroke="#ffe500" stroke-width="10" stroke-linecap="round"/>
+              <!-- Shaded Area Upper -->
+              <polygon points="420,380 860,100 860,300 420,300" fill="url(#upper-glow)" opacity="0.15"/>
+              
+              <circle cx="860" cy="100" r="12" fill="#ffe500"/>
+              <text x="860" y="70" fill="#ffe500" font-family="'JetBrains Mono'" font-size="20" font-weight="800" text-anchor="end">UPPER K: +280% (TECH CAPITAL)</text>
+              <text x="860" y="92" fill="#f8fafc" font-size="14" text-anchor="end">AI Hyperscalers • Asset Owners • Compute Monopolies</text>
+
+              <!-- LOWER ARM OF THE K (Working Class & Labor Share) -->
+              <path id="k-lower-path" d="M 420 380 L 860 520" stroke="#ff334b" stroke-width="10" stroke-linecap="round"/>
+              <!-- Shaded Area Lower -->
+              <polygon points="420,380 860,520 860,300 420,300" fill="url(#lower-glow)" opacity="0.15"/>
+
+              <circle cx="860" cy="520" r="12" fill="#ff334b"/>
+              <text x="860" y="555" fill="#ff334b" font-family="'JetBrains Mono'" font-size="20" font-weight="800" text-anchor="end">LOWER K: -34% (REAL LABOR WAGES)</text>
+              <text x="860" y="575" fill="#f8fafc" font-size="14" text-anchor="end">Routine Cognitive Labor • Debt-Laden Middle Class • Global South</text>
+            </svg>
+          </div>
+
+          <!-- Right: Key Metric Cards -->
+          <div class="s1-cards-col">
+            <div class="k-metric-card upper" id="s1-c1">
+              <div class="k-card-header">
+                <span class="k-card-title" style="color: var(--vox-yellow);">The Upper Arm: Capital Ascent</span>
+                <span class="k-card-stat yellow">+280%</span>
+              </div>
+              <p class="k-card-desc">
+                Surging asset valuations driven by sovereign AI investment, hyperscaler profits, and astronomical compute infrastructure consolidation.
+              </p>
+            </div>
+
+            <div class="k-metric-card lower" id="s1-c2">
+              <div class="k-card-header">
+                <span class="k-card-title" style="color: var(--vox-red);">The Lower Arm: Labor Compression</span>
+                <span class="k-card-stat red">-34%</span>
+              </div>
+              <p class="k-card-desc">
+                Stagnant purchasing power squeezed between persistent cost-of-living inflation and the looming threat of algorithmic obsolescence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SCENE 2: THE AI DIVIDE (18.0s - 37.0s) ================= -->
+      <div id="scene2" class="scene clip" data-start="18.0" data-duration="19.0">
+        <div class="headline-block">
+          <div class="vox-tagline">Episode 02 • Technological Divergence</div>
+          <h1 class="vox-headline">
+            The AI Engine: <span class="vox-highlight">Capital Monopoly</span> vs. <span class="vox-highlight-red">Cognitive Labor</span>
+          </h1>
+        </div>
+
+        <div class="s2-container">
+          <!-- Left Column: The Compute Elite -->
+          <div class="s2-col capital" id="s2-col1">
+            <div class="s2-badge" style="color: var(--vox-yellow);">The Upper K Engine</div>
+            <h2 class="s2-title">Compute Hegemony</h2>
+            <p style="color: #94a3b8; font-size: 16px; line-height: 1.5;">
+              Generative AI is not labor-augmenting for the masses; it is a hyper-centralized capital asset. Returns accrue exclusively to the infrastructure owners.
+            </p>
+
+            <ul class="s2-list">
+              <li><strong>Hyperscaler Monopoly:</strong> 5 companies control over 80% of top-tier cloud training capacity.</li>
+              <li><strong>Zero Marginal Cost Scale:</strong> $1 of GPU compute now displaces dozens of entry-level analyst and legal drafting hours.</li>
+              <li><strong>Capital Super-Returns:</strong> AI productivity gains bypass labor wages and flow directly to balance sheets.</li>
+            </ul>
+
+            <div class="stat-callout">
+              <div class="stat-num" style="color: var(--vox-yellow);">$14.2T</div>
+              <div style="font-size: 13px; color: #94a3b8; font-family: 'JetBrains Mono';">Combined market cap of top 5 AI compute gatekeepers</div>
+            </div>
+          </div>
+
+          <!-- Right Column: Displaced Cognitive Labor -->
+          <div class="s2-col labor" id="s2-col2">
+            <div class="s2-badge" style="color: var(--vox-red);">The Lower K Reality</div>
+            <h2 class="s2-title">The Vanishing Ladder</h2>
+            <p style="color: #94a3b8; font-size: 16px; line-height: 1.5;">
+              Unlike the industrial revolution which automated muscle, AI automates pattern-based cognitive tasks, destroying the traditional path from junior to senior professional.
+            </p>
+
+            <ul class="s2-list">
+              <li><strong>Junior Pipeline Evaporation:</strong> Entry-level software, design, translation, and research roles down 42%.</li>
+              <li><strong>Labor Share Collapse:</strong> Labor's share of national income hits historic lows as corporate gross margins expand.</li>
+              <li><strong>The Precariat Shift:</strong> Skilled degree holders pushed downward into insecure gig and service work.</li>
+            </ul>
+
+            <div class="stat-callout">
+              <div class="stat-num" style="color: var(--vox-red);">-42%</div>
+              <div style="font-size: 13px; color: #94a3b8; font-family: 'JetBrains Mono';">Decline in entry-level corporate white-collar job postings</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SCENE 3: GEOPOLITICAL FRACTURE (37.0s - 56.0s) ================= -->
+      <div id="scene3" class="scene clip" data-start="37.0" data-duration="19.0">
+        <div class="headline-block">
+          <div class="vox-tagline">Episode 03 • The New Imperialism</div>
+          <h1 class="vox-headline">
+            Geopolitical Chokepoints: <span class="vox-highlight">The Compute Cold War</span>
+          </h1>
+        </div>
+
+        <div class="s3-container">
+          <!-- Left: Chokepoint Map Schematic -->
+          <div class="s3-map-col">
+            <svg id="geo-svg" width="920" height="600" viewBox="0 0 920 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- World Grid Schematic Lines -->
+              <ellipse cx="460" cy="300" rx="420" ry="240" stroke="#1e293b" stroke-width="2" fill="#0f172a" fill-opacity="0.3"/>
+              <ellipse cx="460" cy="300" rx="260" ry="150" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <line x1="40" y1="300" x2="880" y2="300" stroke="#1e293b" stroke-width="2"/>
+              <line x1="460" y1="60" x2="460" y2="540" stroke="#1e293b" stroke-width="2"/>
+
+              <!-- Chokepoint 1: ASML (Netherlands) -->
+              <g id="cp-asml">
+                <circle cx="430" cy="210" r="14" fill="#0284c7" stroke="#38bdf8" stroke-width="3"/>
+                <circle cx="430" cy="210" r="26" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4 4" class="dash-trace"/>
+                <text x="430" y="175" fill="#38bdf8" font-family="'JetBrains Mono'" font-size="15" font-weight="800" text-anchor="middle">ASML (EUV LITHOGRAPHY)</text>
+                <text x="430" y="193" fill="#cbd5e1" font-size="12" text-anchor="middle">100% Monopoly on Cutting-Edge Chip Optics</text>
+              </g>
+
+              <!-- Chokepoint 2: TSMC (Taiwan) -->
+              <g id="cp-tsmc">
+                <circle cx="720" cy="280" r="14" fill="#dc2626" stroke="#f87171" stroke-width="3"/>
+                <circle cx="720" cy="280" r="26" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 4" class="dash-trace"/>
+                <text x="720" y="245" fill="#f87171" font-family="'JetBrains Mono'" font-size="15" font-weight="800" text-anchor="middle">TSMC (TAIWAN 2nm/3nm)</text>
+                <text x="720" y="263" fill="#cbd5e1" font-size="12" text-anchor="middle">>90% of World's Advanced AI Silicon Fab</text>
+              </g>
+
+              <!-- Chokepoint 3: Silicon Valley Hyperscale (USA) -->
+              <g id="cp-usa">
+                <circle cx="210" cy="220" r="14" fill="#f59e0b" stroke="#fde047" stroke-width="3"/>
+                <circle cx="210" cy="220" r="26" stroke="#fde047" stroke-width="1.5" stroke-dasharray="4 4" class="dash-trace"/>
+                <text x="210" y="185" fill="#fde047" font-family="'JetBrains Mono'" font-size="15" font-weight="800" text-anchor="middle">US HYPERSCALERS & NVIDIA</text>
+                <text x="210" y="203" fill="#cbd5e1" font-size="12" text-anchor="middle">CUDA Architecture & Cloud Compute Sovereignty</text>
+              </g>
+
+              <!-- The Excluded Global South Region (Bottom Arc) -->
+              <g id="cp-south">
+                <rect x="240" y="420" width="440" height="90" rx="10" fill="#1e1b2e" stroke="#ef4444" stroke-width="2"/>
+                <text x="460" y="455" fill="#ef4444" font-family="'JetBrains Mono'" font-size="16" font-weight="800" text-anchor="middle">THE GLOBAL SOUTH (THE LOWER K)</text>
+                <text x="460" y="480" fill="#cbd5e1" font-size="13" text-anchor="middle">Locked Out of Energy Grids & Chip Fabs</text>
+                <text x="460" y="498" fill="#94a3b8" font-size="12" text-anchor="middle">Relegated to Raw Mineral Mining & Cheap Data Annotation</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Right: Strategic Realities -->
+          <div class="s3-choke-col">
+            <div class="choke-card" id="s3-c1">
+              <div class="choke-tag">Sovereignty Chasm</div>
+              <div class="choke-name">Sovereign Compute or Vassalage</div>
+              <div class="choke-desc">
+                Nations that cannot train their own frontier models become digital colonies, dependent on foreign corporate algorithms for their medicine, defense, and economy.
+              </div>
+            </div>
+
+            <div class="choke-card" id="s3-c2">
+              <div class="choke-tag">Energy Chokepoint</div>
+              <div class="choke-name">The Gigawatt Power Grab</div>
+              <div class="choke-desc">
+                A single advanced AI data cluster consumes as much power as an entire city. Wealthy nations lock down nuclear reactors and green grids, starving developing economies.
+              </div>
+            </div>
+
+            <div class="choke-card" id="s3-c3">
+              <div class="choke-tag">Debt Trap</div>
+              <div class="choke-name">Dollar Debt + Technological Dependency</div>
+              <div class="choke-desc">
+                Developing nations face soaring debt service while import costs for AI hardware and compute access surge in US dollars.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SCENE 4: GRAVE REALITY (56.0s - 74.0s) ================= -->
+      <div id="scene4" class="scene clip" data-start="56.0" data-duration="18.0">
+        <div class="headline-block">
+          <div class="vox-tagline">Episode 04 • The Grave Conclusion</div>
+          <h1 class="vox-headline">
+            The Breaking Point: <span class="vox-highlight-red">The Engineered Chasm</span>
+          </h1>
+        </div>
+
+        <div class="s4-container">
+          <div class="s4-card c1" id="s4-c1">
+            <div class="s4-roman">I</div>
+            <h2 class="s4-title" style="color: var(--vox-yellow);">Algorithmic Feudalism</h2>
+            <p class="s4-desc">
+              When productive capital is concentrated in algorithmic models owned by an ultra-minority, labor loses its primary bargaining chip. The social compact of work-for-prosperity ceases to function.
+            </p>
+            <div class="s4-footer-quote">
+              "Capital captures everything. Labor captures nothing."
+            </div>
+          </div>
+
+          <div class="s4-card c2" id="s4-c2">
+            <div class="s4-roman">II</div>
+            <h2 class="s4-title" style="color: var(--vox-red);">Democratic Destabilization</h2>
+            <p class="s4-desc">
+              History teaches that extreme economic divergence cannot coexist with democratic stability. As economic mobility collapses, political radicalization, institutional distrust, and unrest accelerate.
+            </p>
+            <div class="s4-footer-quote">
+              "Inequality is not just economic; it is systemic poison."
+            </div>
+          </div>
+
+          <div class="s4-card c3" id="s4-c3">
+            <div class="s4-roman">III</div>
+            <h2 class="s4-title" style="color: var(--vox-cyan);">The Non-Negotiable Choice</h2>
+            <p class="s4-desc">
+              The K-shape is not an accident of nature. It is an engineered policy outcome. Without public compute utility, wealth redistribution, and global infrastructure access, the chasm becomes permanent.
+            </p>
+            <div class="s4-footer-quote">
+              "Democratize compute, or prepare for the rupture."
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GSAP Master Animation Sync for 74s Explainer -->
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // ================= SCENE 1 (0.0s - 18.0s) =================
+      tl.to("#scene1", { opacity: 1, duration: 0.8, ease: "power2.out" }, 0.5)
+        .fromTo("#k-upper-path", { strokeDashoffset: 600, strokeDasharray: 600 }, { strokeDashoffset: 0, duration: 2.5, ease: "power2.out" }, 2.0)
+        .fromTo("#k-lower-path", { strokeDashoffset: 600, strokeDasharray: 600 }, { strokeDashoffset: 0, duration: 2.5, ease: "power2.out" }, 2.5)
+        .fromTo("#s1-c1", { x: 50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, ease: "back.out(1.2)" }, 4.0)
+        .fromTo("#s1-c2", { x: 50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, ease: "back.out(1.2)" }, 7.5)
+        .to("#scene1", { opacity: 0, y: -30, duration: 0.6, ease: "power2.in" }, 17.2);
+
+      // ================= SCENE 2 (18.0s - 37.0s) =================
+      tl.to("#scene2", { opacity: 1, duration: 0.8, ease: "power2.out" }, 18.0)
+        .fromTo("#s2-col1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 19.0)
+        .fromTo("#s2-col2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 26.5)
+        .to("#scene2", { opacity: 0, y: -30, duration: 0.6, ease: "power2.in" }, 36.2);
+
+      // ================= SCENE 3 (37.0s - 56.0s) =================
+      tl.to("#scene3", { opacity: 1, duration: 0.8, ease: "power2.out" }, 37.0)
+        .fromTo("#geo-svg", { scale: 0.92, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: "back.out(1.2)" }, 38.0)
+        .fromTo("#s3-c1", { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6 }, 40.0)
+        .fromTo("#s3-c2", { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6 }, 44.5)
+        .fromTo("#s3-c3", { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6 }, 49.0)
+        .to("#scene3", { opacity: 0, y: -30, duration: 0.6, ease: "power2.in" }, 55.2);
+
+      // ================= SCENE 4 (56.0s - 74.0s) =================
+      tl.to("#scene4", { opacity: 1, duration: 0.8, ease: "power2.out" }, 56.0)
+        .fromTo("#s4-c1", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "back.out(1.2)" }, 57.0)
+        .fromTo("#s4-c2", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "back.out(1.2)" }, 62.0)
+        .fromTo("#s4-c3", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "back.out(1.2)" }, 67.0);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

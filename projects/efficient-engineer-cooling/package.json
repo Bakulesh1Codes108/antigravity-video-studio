@@ -1,0 +1,11 @@
+{
+  "name": "efficient-engineer-cooling-video",
+  "version": "1.0.0",
+  "description": "The Efficient Engineer style technical animation explaining Refrigeration and Chip Heat Sinks",
+  "dependencies": {
+    "gsap": "^3.15.0"
+  },
+  "scripts": {
+    "render": "hyperframes render"
+  }
+}

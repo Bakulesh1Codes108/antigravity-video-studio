@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Lyric Video</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --bg-deep: #070a14;
+        --bg-wine: #380820;
+        --text-color: #ffffff;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html, body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #000;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at 50% 45%, var(--bg-deep), var(--bg-wine));
+      }
+      .orb {
+        position: absolute;
+        width: 700px;
+        height: 700px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+        pointer-events: none;
+      }
+      .badge {
+        position: absolute;
+        top: 200px;
+        padding: 14px 32px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .lyric-box {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 900px;
+        height: 400px;
+      }
+      .word {
+        position: absolute;
+        font-size: 135px;
+        font-weight: 800;
+        color: var(--text-color);
+        letter-spacing: -0.04em;
+        text-transform: lowercase;
+        opacity: 0;
+        will-change: transform, opacity;
+      }
+      .footer-note {
+        position: absolute;
+        bottom: 200px;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 28px;
+        letter-spacing: 0.06em;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="8"
+      data-width="1080"
+      data-height="1920"
+    >
+      <audio id="audio-track" class="clip" data-start="0" data-duration="8" src="assets/song.mp3"></audio>
+      <div id="orb" class="orb clip" data-start="0" data-duration="8" data-track-index="0"></div>
+      <div id="badge" class="badge clip" data-start="0" data-duration="8" data-track-index="1">Antigravity Lyric Studio</div>
+      
+      <div class="lyric-box">
+        <!-- Lyric clips are injected dynamically by Antigravity -->
+        <span id="w1" class="word clip" data-start="0.5" data-duration="1.4" data-track-index="2">pal-pal</span>
+        <span id="w2" class="word clip" data-start="1.9" data-duration="1.4" data-track-index="3">jeena</span>
+        <span id="w3" class="word clip" data-start="3.3" data-duration="1.4" data-track-index="4">muhaal</span>
+        <span id="w4" class="word clip" data-start="4.7" data-duration="1.4" data-track-index="5">mera</span>
+        <span id="w5" class="word clip" data-start="6.1" data-duration="1.8" data-track-index="6">bina</span>
+      </div>
+
+      <div id="footer" class="footer-note clip" data-start="0" data-duration="8" data-track-index="7">Antigravity • HyperFrames</div>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      tl.to("#orb", {
+        scale: 1.35,
+        opacity: 0.85,
+        duration: 4,
+        yoyo: true,
+        ease: "sine.inOut"
+      }, 0);
+
+      // Word animations
+      tl.fromTo("#w1", { opacity: 0, scale: 0.8, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.25, ease: "back.out(1.5)" }, 0.5)
+        .to("#w1", { opacity: 0, scale: 1.1, y: -20, duration: 0.2, ease: "power2.in" }, 1.7);
+
+      tl.fromTo("#w2", { opacity: 0, scale: 0.8, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.25, ease: "back.out(1.5)" }, 1.9)
+        .to("#w2", { opacity: 0, scale: 1.1, y: -20, duration: 0.2, ease: "power2.in" }, 3.1);
+
+      tl.fromTo("#w3", { opacity: 0, scale: 0.8, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.25, ease: "back.out(1.5)" }, 3.3)
+        .to("#w3", { opacity: 0, scale: 1.1, y: -20, duration: 0.2, ease: "power2.in" }, 4.5);
+
+      tl.fromTo("#w4", { opacity: 0, scale: 0.8, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.25, ease: "back.out(1.5)" }, 4.7)
+        .to("#w4", { opacity: 0, scale: 1.1, y: -20, duration: 0.2, ease: "power2.in" }, 5.9);
+
+      tl.fromTo("#w5", { opacity: 0, scale: 0.8, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: "back.out(1.8)" }, 6.1)
+        .to("#w5", { opacity: 0, scale: 1.2, duration: 0.3, ease: "power2.in" }, 7.6);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

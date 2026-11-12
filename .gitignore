@@ -1,0 +1,41 @@
+# Python & Environments
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Models & Tool Binaries (> 100MB)
+*.bin
+*.onnx
+*.pt
+*.safetensors
+models/
+ffmpeg/
+whisper/
+
+# Node.js & Temporary Caches
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.hyperframes/
+projects/*/.hyperframes/
+
+# Intermediate Render Outputs & Temp Audio Stems
+projects/*/renders/
+projects/*/audio/*.wav
+projects/*/audio/*.aiff
+projects/*/renders/thumbnails/
+*.tmp
+
+# Whitelist production showcase examples & guide PDF
+!examples/*.mp4
+!Antigravity-Video-Free-Guide.pdf
+!templates/**/assets/*.gitkeep
+
+# OS / Editor artifacts
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
