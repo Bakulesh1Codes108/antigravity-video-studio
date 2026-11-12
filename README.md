@@ -116,9 +116,23 @@ sequenceDiagram
 
 ## 🌟 Included Showcase Examples
 
-This repository includes two complete, production-grade example videos created with the pipeline:
+This repository includes three complete, production-grade example videos created with the pipeline:
 
-### 1. ⚙️ "The Efficient Engineer" Show Video
+### 1. 🌿 "Aquascaping 10x ROI Side Hustle" (9:16 Vertical Tutorial)
+* **File**: [`examples/aquascaping_plant_selling_10x_roi_tutorial.mp4`](./examples/aquascaping_plant_selling_10x_roi_tutorial.mp4)
+* **Topic**: Turning Aquarium Plant Propagation into a 10x ROI Hobby Business (Rare Buce, Anubias, Tissue Culture & Floaters)
+* **Format**: 1080×1920 (9:16 Vertical Shorts/Reels), 30 fps, 1 minute 19 seconds (79s)
+* **Audio Track**: Clear guidance voiceover narration layered over an upbeat lo-fi chillhop / groove electronic bed.
+* **Visual Style**: High-impact editorial social layout (matching Bloomberg Quicktake / NowThis style), red angled breaking badge, full-bleed photography Ken Burns drift, red pin locator dot with vertical leader lines, metric cards (`INVEST: $15`, `PROPAGATE: 10 CLONES`, `RETURN: 10X ROI`), and dynamic step counters.
+* **Master Prompt**:
+  ```text
+  Create a 9:16 vertical video tutorial on making money with aquarium plants as a hobby.
+  TOPIC: Buy rare Bucephalandra Blue and Anubias for $15-$25, propagate into 10 pieces, and sell for 10x ROI.
+  DURATION: 79 seconds
+  STYLE: Red pin indicator with leader line, breaking news top pill, full-bleed macro plant photography, lower-third headlines, and ROI metric badges.
+  ```
+
+### 2. ⚙️ "The Efficient Engineer" Show Video
 * **File**: [`examples/efficient_engineer_refrigeration_and_heat_sink_cooling.mp4`](./examples/efficient_engineer_refrigeration_and_heat_sink_cooling.mp4)
 * **Topic**: The Thermodynamics of Refrigeration & Semiconductor Chip Heat Sinks
 * **Format**: 1920×1080 (16:9 Landscape YouTube), 30 fps, 35 seconds

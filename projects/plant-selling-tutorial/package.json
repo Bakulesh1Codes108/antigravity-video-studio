@@ -1,0 +1,11 @@
+{
+  "name": "plant-selling-tutorial",
+  "version": "1.0.0",
+  "description": "9:16 Vertical Video Tutorial: Turning Aquatic Plant Propagation into a 10x ROI Hobby Business",
+  "dependencies": {
+    "gsap": "^3.15.0"
+  },
+  "scripts": {
+    "render": "hyperframes render"
+  }
+}
