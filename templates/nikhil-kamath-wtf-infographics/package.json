@@ -1,0 +1,20 @@
+{
+  "name": "nikhil-kamath-wtf-infographics",
+  "version": "1.0.0",
+  "description": "Nikhil Kamath WTF Podcast Style Infographics with Patterned Ethnic Wallpaper, Floating Framed Video, Dotted Leader Callouts, License-Plate Number Badges, and Scrapbook Formulas",
+  "main": "index.html",
+  "scripts": {
+    "render": "hyperframes render"
+  },
+  "keywords": [
+    "hyperframes",
+    "nikhil-kamath",
+    "wtf-podcast",
+    "infographics",
+    "data-visualization",
+    "shorts",
+    "reels"
+  ],
+  "author": "Antigravity Video Studio",
+  "license": "MIT"
+}

@@ -29,8 +29,17 @@ projects/*/audio/*.aiff
 projects/*/renders/thumbnails/
 *.tmp
 
-# Whitelist production showcase examples & guide PDF
-!examples/*.mp4
+# User Personal Recordings & Generated Videos (NEVER PUSH)
+examples/nikhil_kamath_*.mp4
+projects/nikhil-kamath*/**/talking_head.mp4
+projects/nikhil-kamath*/**/mixed_audio.mp3
+projects/nikhil-kamath*/**/bg_music.mp3
+projects/nikhil-kamath*/**/test*.mp4
+
+# Whitelist public template examples & guide PDF
+!examples/efficient_engineer_refrigeration_and_heat_sink_cooling.mp4
+!examples/vox_k_shape_recovery_ai_geopolitics_explainer.mp4
+!examples/aquascaping_plant_selling_10x_roi_tutorial.mp4
 !Antigravity-Video-Free-Guide.pdf
 !templates/**/assets/*.gitkeep
 

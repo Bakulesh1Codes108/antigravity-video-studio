@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080, height=1920" />
+  <title>Nikhil Kamath WTF Style Infographics Template</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Bungee&family=JetBrains+Mono:wght@700;800&family=Playfair+Display:ital,wght@1,900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #000;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #fff;
+    }
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    /* Permanent Top & Bottom Letterbox Bars */
+    .top-letterbox {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1080px;
+      height: 190px;
+      background: #000;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 55px;
+    }
+    .bottom-letterbox {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 1080px;
+      height: 190px;
+      background: #000;
+      z-index: 100;
+    }
+
+    /* Official WTF. Corner Logo */
+    .wtf-logo {
+      display: flex;
+      align-items: center;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 58px;
+      letter-spacing: -2px;
+    }
+    .wtf-logo .w { color: #f59e0b; }
+    .wtf-logo .t { color: #f59e0b; margin-left: 1px; }
+    .wtf-logo .f { color: #ef4444; margin-left: 1px; position: relative; }
+    .wtf-logo .star {
+      position: absolute;
+      top: -4px;
+      right: -16px;
+      color: #fff;
+      font-size: 26px;
+    }
+
+    /* Patterned Ethnic Infographic Wallpaper (Stage Area: y=190 to 1730) */
+    .infographic-stage {
+      position: absolute;
+      top: 190px;
+      left: 0;
+      width: 1080px;
+      height: 1540px;
+      background-color: #1a365d; /* Royal Blue; or Terracotta #9a3412 */
+      overflow: hidden;
+    }
+    
+    /* Decorative Ethnic Borders */
+    .ethnic-border-top, .ethnic-border-bottom {
+      position: absolute;
+      left: 0;
+      width: 1080px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      font-size: 22px;
+      color: rgba(255, 255, 255, 0.45);
+      border-top: 1.5px dashed rgba(255, 255, 255, 0.35);
+      border-bottom: 1.5px dashed rgba(255, 255, 255, 0.35);
+    }
+    .ethnic-border-top { top: 18px; }
+    .ethnic-border-bottom { bottom: 18px; }
+
+    /* Floating Framed Speaker Video Card */
+    .speaker-card {
+      position: absolute;
+      top: 260px;
+      left: 35px;
+      width: 1010px;
+      height: 580px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 3.5px solid #fef3c7;
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.7);
+      z-index: 20;
+      background: #111;
+      will-change: transform, width, height;
+    }
+    .speaker-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* CRT Scanline Texture Overlay */
+    .crt-scanlines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.28) 0px,
+        rgba(0, 0, 0, 0.28) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+      pointer-events: none;
+      z-index: 25;
+      opacity: 0.85;
+    }
+
+    /* SVG Curved Dotted Leader Callout Lines */
+    .callout-svg-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 30;
+    }
+
+    /* License-Plate / Road-Sign Number Badge */
+    .stat-plate-badge {
+      position: absolute;
+      top: 310px;
+      right: 75px;
+      width: 320px;
+      padding: 16px 20px;
+      background: #4d7c0f; /* Olive Army Green */
+      border: 3.5px solid #14532d;
+      border-radius: 20px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), inset 0 2px 4px rgba(255, 255, 255, 0.25);
+      text-align: center;
+      z-index: 35;
+      will-change: transform;
+    }
+    .stat-plate-number {
+      font-family: 'Bungee', cursive, sans-serif;
+      font-size: 88px;
+      line-height: 0.95;
+      color: #fef08a; /* Embossed Yellow */
+      text-shadow: 3px 3px 0px #1e3a1e, -1px -1px 0px rgba(255,255,255,0.4);
+      letter-spacing: -2px;
+    }
+    .stat-plate-label {
+      font-size: 24px;
+      font-weight: 900;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 6px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+    }
+
+    /* Flying Rupee Currency Doodle Emitters */
+    .rupee-doodle {
+      position: absolute;
+      font-size: 48px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+      z-index: 32;
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    /* Scrapbook Math Formula Equation Deck */
+    .formula-deck {
+      position: absolute;
+      top: 890px;
+      left: 40px;
+      width: 1000px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      z-index: 40;
+    }
+    .paper-cutout-box {
+      background: #fef9c3;
+      color: #0f172a;
+      padding: 14px 28px;
+      border-radius: 12px;
+      border: 3px solid #000;
+      box-shadow: 6px 6px 0px #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: rotate(-2deg);
+    }
+    .paper-cutout-box .pre-label {
+      font-size: 24px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .paper-cutout-box .main-val {
+      font-family: 'Bungee', sans-serif;
+      font-size: 72px;
+      line-height: 1;
+      color: #15803d;
+    }
+    .formula-equals {
+      font-family: 'Bungee', sans-serif;
+      font-size: 90px;
+      color: #facc15;
+      text-shadow: 4px 4px 0px #000;
+    }
+    .formula-result-box {
+      background: #facc15;
+      color: #000;
+      padding: 18px 34px;
+      border-radius: 16px;
+      border: 4px solid #000;
+      box-shadow: 8px 8px 0px #000;
+      transform: rotate(2deg);
+      text-align: center;
+    }
+    .formula-result-box .res-label {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+    }
+    .formula-result-box .res-num {
+      font-family: 'Bungee', sans-serif;
+      font-size: 82px;
+      line-height: 1;
+      color: #1e3a8a;
+      text-shadow: 3px 3px 0px #fff;
+    }
+
+    /* Kinetic Subtitles Below Video Window */
+    .wtf-subtitles {
+      position: absolute;
+      bottom: 240px;
+      left: 0;
+      width: 1080px;
+      text-align: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 900;
+      font-size: 58px;
+      line-height: 1.2;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      -webkit-text-stroke: 3px #000;
+      paint-order: stroke fill;
+      text-shadow: 0 8px 24px rgba(0, 0, 0, 0.95);
+      z-index: 50;
+    }
+  </style>
+</head>
+<body>
+  <div
+    id="root"
+    data-composition-id="main"
+    data-start="0"
+    data-duration="30"
+    data-width="1080"
+    data-height="1920"
+  >
+    <!-- Top Letterbox Bar -->
+    <div class="top-letterbox">
+      <div class="wtf-logo">
+        <span class="w">W</span><span class="t">T</span><span class="f">F<span class="star">✦</span></span>
+      </div>
+    </div>
+
+    <!-- Main Infographic Stage -->
+    <div class="infographic-stage">
+      <div class="ethnic-border-top">
+        🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴
+      </div>
+
+      <!-- Framed Floating Video Card -->
+      <div class="speaker-card" id="speakerCard">
+        <video id="speakerVideo" src="assets/video.mp4" muted playsinline></video>
+        <div class="crt-scanlines"></div>
+      </div>
+
+      <!-- Callout Leader Line SVG -->
+      <svg class="callout-svg-layer" viewBox="0 0 1080 1540">
+        <path id="leaderPath" d="M 480 380 Q 560 300 660 340" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 8"/>
+        <circle id="leaderDot" cx="480" cy="380" r="7" fill="#ffffff" />
+      </svg>
+
+      <!-- License-Plate Stat Badge -->
+      <div class="stat-plate-badge" id="statBadge">
+        <div class="stat-plate-number" id="statNum">0.5%</div>
+        <div class="stat-plate-label" id="statLabel">OF GDP ON TOURISM</div>
+      </div>
+
+      <!-- Flying Rupee Doodles -->
+      <div class="rupee-doodle" id="rup1">₹</div>
+      <div class="rupee-doodle" id="rup2">💸</div>
+      <div class="rupee-doodle" id="rup3">₹</div>
+
+      <!-- Scrapbook Math Formula Deck -->
+      <div class="formula-deck" id="formulaDeck">
+        <div class="paper-cutout-box">
+          <div class="pre-label">FOR EVERY</div>
+          <div class="main-val">1 ₹</div>
+          <div class="pre-label">SPENT</div>
+        </div>
+        <div class="formula-equals">=</div>
+        <div class="formula-result-box">
+          <div class="res-label">GEV GROWS BY</div>
+          <div class="res-num">+3.25%</div>
+        </div>
+      </div>
+
+      <div class="ethnic-border-bottom">
+        🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴 ✦ 🌴
+      </div>
+    </div>
+
+    <!-- Subtitle Bar -->
+    <div class="wtf-subtitles" id="subtitles">
+      0.5% OF GDP ON TOURISM
+    </div>
+
+    <!-- Bottom Letterbox Bar -->
+    <div class="bottom-letterbox"></div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // Video sync
+    const vid = document.getElementById("speakerVideo");
+    tl.to(vid, { currentTime: 30, duration: 30, ease: "none" }, 0);
+
+    // Initial Entrance: Speaker Card scale in
+    tl.fromTo("#speakerCard", { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.5)" }, 0.2);
+
+    // Stat Badge Pop-in
+    tl.fromTo("#statBadge", { scale: 0, rotation: -15 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(1.8)" }, 1.0);
+
+    // Number roll 0.5% -> 0.7% -> 1.0%
+    tl.to("#statNum", { textContent: "0.7%", duration: 0.1, snap: { textContent: 1 } }, 4.0);
+    tl.to("#statNum", { textContent: "1.0%", duration: 0.1, snap: { textContent: 1 } }, 8.0);
+
+    // Rupee doodles emitter
+    tl.fromTo("#rup1", { x: 500, y: 400, opacity: 0, scale: 0.5 }, { x: 620, y: 320, opacity: 1, scale: 1.2, duration: 0.4 }, 8.2);
+    tl.fromTo("#rup2", { x: 520, y: 420, opacity: 0, scale: 0.5 }, { x: 700, y: 360, opacity: 1, scale: 1.3, duration: 0.5 }, 8.4);
+    tl.fromTo("#rup3", { x: 540, y: 390, opacity: 0, scale: 0.5 }, { x: 760, y: 310, opacity: 1, scale: 1.4, duration: 0.6 }, 8.6);
+
+    // Formula Deck Entrance
+    tl.fromTo("#formulaDeck", { y: 60, opacity: 0, scale: 0.8 }, { y: 0, opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 12.0);
+
+    window.__timelines = window.__timelines || {};
+    window.__timelines["main"] = tl;
+    tl.seek(0);
+  </script>
+</body>
+</html>
